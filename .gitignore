@@ -19,19 +19,29 @@ conf/email.properties
 # Sails.js / Waterline / Grunt / Others
 ################################################
 .tmp
+/out
+
+################################################
+# IDEs
+################################################
+
+/.idea
+/.idea_modules
 
 ################################################
 # Miscellaneous
 ################################################
 
-/.idea
-/.idea_modules
+# Play 2 Framework
 /.settings
 /.classpath
 /.project
-
+/*.iml
+/RUNNING_PID
 target
 project/project
+logs
+dist
 
 # The tests are not ready to push to repository
 /test
