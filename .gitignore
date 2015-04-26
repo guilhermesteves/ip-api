@@ -32,3 +32,6 @@ conf/email.properties
 
 target
 project/project
+
+# The tests are not ready to push to repository
+/test
