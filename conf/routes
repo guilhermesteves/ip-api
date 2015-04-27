@@ -3,73 +3,76 @@
 #*********************************************************************************************************
 
 # Home page
-GET            /                                        controllers.ApplicationController.index()
+GET            /                                            controllers.ApplicationController.index()
+GET            /api                                         controllers.ApplicationController.apiV1()
+GET            /api/v1/                                     controllers.ApplicationController.apiV1()
 
 # CORS
-OPTIONS        /api/*anyPath                            controllers.auth.Cors.options(anyPath)
+OPTIONS        /api/v1/*anyPath                             controllers.auth.Cors.options(anyPath)
 
 # Admin Authentication
-POST           /api/admin/auth/login/:client            controllers.auth.AdminAuthentications.login(client : String)
-POST           /api/admin/auth/exchangeAuthCode/        controllers.auth.AdminAuthentications.exchangeAuthCode()
-POST           /api/admin/auth/refreshToken/            controllers.auth.AdminAuthentications.refreshToken()
-POST           /api/admin/auth/logout/                  controllers.auth.AdminAuthentications.logout()
-PUT            /api/admin/auth/password/                controllers.auth.AdminAuthentications.updatePassword()
+POST           /api/v1/admin/auth/login/:client             controllers.auth.AdminAuthentications.login(client : String)
+POST           /api/v1/admin/auth/exchangeAuthCode/         controllers.auth.AdminAuthentications.exchangeAuthCode()
+POST           /api/v1/admin/auth/refreshToken/             controllers.auth.AdminAuthentications.refreshToken()
+POST           /api/v1/admin/auth/logout/                   controllers.auth.AdminAuthentications.logout()
+PUT            /api/v1/admin/auth/password/                 controllers.auth.AdminAuthentications.updatePassword()
 
 # Mod Authentication
-POST           /api/mod/auth/login/:client              controllers.auth.ModAuthentications.login(client : String)
-POST           /api/mod/auth/exchangeAuthCode/          controllers.auth.ModAuthentications.exchangeAuthCode()
-POST           /api/mod/auth/refreshToken/              controllers.auth.ModAuthentications.refreshToken()
-POST           /api/mod/auth/logout/                    controllers.auth.ModAuthentications.logout()
-PUT            /api/mod/auth/password/                  controllers.auth.ModAuthentications.updatePassword()
+POST           /api/v1/mod/auth/login/:client               controllers.auth.ModAuthentications.login(client : String)
+POST           /api/v1/mod/auth/exchangeAuthCode/           controllers.auth.ModAuthentications.exchangeAuthCode()
+POST           /api/v1/mod/auth/refreshToken/               controllers.auth.ModAuthentications.refreshToken()
+POST           /api/v1/mod/auth/logout/                     controllers.auth.ModAuthentications.logout()
+PUT            /api/v1/mod/auth/password/                   controllers.auth.ModAuthentications.updatePassword()
 
 # User Authentication
-POST           /api/user/auth/login/:client             controllers.auth.UserAuthentications.login(client : String)
-POST           /api/user/auth/exchangeAuthCode/         controllers.auth.UserAuthentications.exchangeAuthCode()
-POST           /api/user/auth/refreshToken/             controllers.auth.UserAuthentications.refreshToken()
-POST           /api/user/auth/logout/                   controllers.auth.UserAuthentications.logout()
+POST           /api/v1/user/auth/login/:client              controllers.auth.UserAuthentications.login(client : String)
+POST           /api/v1/user/auth/exchangeAuthCode/          controllers.auth.UserAuthentications.exchangeAuthCode()
+POST           /api/v1/user/auth/refreshToken/              controllers.auth.UserAuthentications.refreshToken()
+POST           /api/v1/user/auth/logout/                    controllers.auth.UserAuthentications.logout()
 
 #*********************************************************************************************************
 # Settings
 #*********************************************************************************************************
-POST           /api/setting/                            controllers.SettingsController.create()
-GET            /api/setting/                            controllers.SettingsController.list(offset : java.lang.Integer ?=0, limit : java.lang.Integer ?= 50)
-GET            /api/setting/:id                         controllers.SettingsController.load(id : String)
-PUT            /api/setting/:id                         controllers.SettingsController.update(id : String)
-DELETE         /api/setting/:id                         controllers.SettingsController.delete(id : String)
+POST           /api/v1/setting/                             controllers.SettingsController.create()
+GET            /api/v1/setting/                             controllers.SettingsController.list(offset : java.lang.Integer ?=0, limit : java.lang.Integer ?= 50)
+GET            /api/v1/setting/:id                          controllers.SettingsController.load(id : String)
+PUT            /api/v1/setting/:id                          controllers.SettingsController.update(id : String)
+DELETE         /api/v1/setting/:id                          controllers.SettingsController.delete(id : String)
 
 #*********************************************************************************************************
 #  Admin Actions
 #*********************************************************************************************************
 
 # Admin
-GET            /api/admin/my                            controllers.AdminController.my()
-POST           /api/admin/                              controllers.AdminController.create()
-GET            /api/admin/                              controllers.AdminController.list(offset : java.lang.Integer ?=0, limit : java.lang.Integer ?= 50,  superAdmin : java.lang.Boolean ?= null)
-GET            /api/admin/:id                           controllers.AdminController.load(id : String)
-PUT            /api/admin/                              controllers.AdminController.update()
-PUT            /api/admin/:id                           controllers.AdminController.update(id : String)
-DELETE         /api/admin/:id                           controllers.AdminController.delete(id : String)
-PUT            /api/admin/:id/deactivate/               controllers.AdminController.deactivate(id : String)
-PUT            /api/admin/:id/activate/                 controllers.AdminController.activate(id : String)
+GET            /api/v1/admin/my                             controllers.AdminController.my()
+POST           /api/v1/admin/                               controllers.AdminController.create()
+GET            /api/v1/admin/                               controllers.AdminController.list(offset : java.lang.Integer ?=0, limit : java.lang.Integer ?= 50,  superAdmin : java.lang.Boolean ?= null)
+GET            /api/v1/admin/:id                            controllers.AdminController.load(id : String)
+PUT            /api/v1/admin/                               controllers.AdminController.update()
+PUT            /api/v1/admin/:id                            controllers.AdminController.update(id : String)
+DELETE         /api/v1/admin/:id                            controllers.AdminController.delete(id : String)
+PUT            /api/v1/admin/:id/deactivate/                controllers.AdminController.deactivate(id : String)
+PUT            /api/v1/admin/:id/activate/                  controllers.AdminController.activate(id : String)
 
 # Mod
-POST           /api/admin/mod/                          controllers.AdminController.createMod()
-GET            /api/admin/mod/                          controllers.AdminController.listMod(offset : java.lang.Integer ?=0, limit : java.lang.Integer ?= 50,  modLevel : java.lang.Integer ?= null, board : String ?= null)
-GET            /api/admin/mod/:id                       controllers.AdminController.loadMod(id : String)
-PUT            /api/admin/mod/:id                       controllers.AdminController.updateMod(id : String)
-DELETE         /api/admin/mod/:id                       controllers.AdminController.deleteMod(id : String)
-PUT            /api/admin/mod/:id/deactivate/           controllers.AdminController.deactivateMod(id : String)
-PUT            /api/admin/mod/:id/activate/             controllers.AdminController.activateMod(id : String)
+POST           /api/v1/admin/mod/                           controllers.ModController.createAsAdmin()
+GET            /api/v1/admin/mod/                           controllers.ModController.listAsAdmin(offset : java.lang.Integer ?=0, limit : java.lang.Integer ?= 50,  modLevel : java.lang.Integer ?= null, board : String ?= null)
+GET            /api/v1/admin/mod/:id                        controllers.ModController.loadAsAdmin(id : String)
+PUT            /api/v1/admin/mod/:id                        controllers.ModController.updateAsAdmin(id : String)
+DELETE         /api/v1/admin/mod/:id                        controllers.ModController.deleteAsAdmin(id : String)
+PUT            /api/v1/admin/mod/:id/deactivate/            controllers.ModController.deactivateAsAdmin(id : String)
+PUT            /api/v1/admin/mod/:id/activate/              controllers.ModController.activateAsAdmin(id : String)
 
 # Board
-POST           /api/admin/board/                        controllers.BoardController.createAsAdmin()
-GET            /api/admin/board/                        controllers.BoardController.listAsAdmin(offset : java.lang.Integer ?=0, limit : java.lang.Integer ?= 50)
-GET            /api/admin/board/:id                     controllers.BoardController.loadAsAdmin(id : String)
-GET            /api/admin/board/:id/slug/               controllers.BoardController.loadBySlugAsAdmin(slug : String)
-PUT            /api/admin/board/:id                     controllers.BoardController.updateAsAdmin(id : String)
-DELETE         /api/admin/board/:id                     controllers.BoardController.deleteAsAdmin(id : String)
-PUT            /api/admin/board/:id/deactivate/         controllers.BoardController.deactivateAsAdmin(id : String)
-PUT            /api/admin/board/:id/activate/           controllers.BoardController.activateAsAdmin(id : String)
+POST           /api/v1/admin/board/                         controllers.BoardController.createAsAdmin()
+GET            /api/v1/admin/board/                         controllers.BoardController.listAsAdmin(offset : java.lang.Integer ?=0, limit : java.lang.Integer ?= 50)
+GET            /api/v1/admin/board/:id                      controllers.BoardController.loadAsAdmin(id : String)
+GET            /api/v1/admin/board/:id/slug/                controllers.BoardController.loadBySlugAsAdmin(slug : String)
+PUT            /api/v1/admin/board/:id                      controllers.BoardController.updateAsAdmin(id : String)
+DELETE         /api/v1/admin/board/:id                      controllers.BoardController.deleteAsAdmin(id : String)
+PUT            /api/v1/admin/board/:id/deactivate/          controllers.BoardController.deactivateAsAdmin(id : String)
+PUT            /api/v1/admin/board/:id/activate/            controllers.BoardController.activateAsAdmin(id : String)
+GET            /api/v1/admin/board/:id/catalog/             controllers.BoardController.catalogAsAdmin(id : String)
 
 # Thread
 
@@ -78,25 +81,26 @@ PUT            /api/admin/board/:id/activate/           controllers.BoardControl
 #*********************************************************************************************************
 
 # Mod
-GET            /api/mod/my                              controllers.ModController.my()
-POST           /api/mod/                                controllers.ModController.create()
-GET            /api/mod/                                controllers.ModController.list(offset : java.lang.Integer ?=0, limit : java.lang.Integer ?= 50,  modLevel : java.lang.Integer ?= null, board : String ?= null)
-GET            /api/mod/:id                             controllers.ModController.load(id : String)
-PUT            /api/mod/                                controllers.ModController.update()
-PUT            /api/mod/:id                             controllers.ModController.update(id : String)
-DELETE         /api/mod/:id                             controllers.ModController.delete(id : String)
-PUT            /api/mod/:id/deactivate/                 controllers.ModController.deactivate(id : String)
-PUT            /api/mod/:id/activate/                   controllers.ModController.activate(id : String)
+GET            /api/v1/mod/my                               controllers.ModController.my()
+POST           /api/v1/mod/                                 controllers.ModController.create()
+GET            /api/v1/mod/                                 controllers.ModController.list(offset : java.lang.Integer ?=0, limit : java.lang.Integer ?= 50,  modLevel : java.lang.Integer ?= null, board : String ?= null)
+GET            /api/v1/mod/:id                              controllers.ModController.load(id : String)
+PUT            /api/v1/mod/                                 controllers.ModController.update()
+PUT            /api/v1/mod/:id                              controllers.ModController.update(id : String)
+DELETE         /api/v1/mod/:id                              controllers.ModController.delete(id : String)
+PUT            /api/v1/mod/:id/deactivate/                  controllers.ModController.deactivate(id : String)
+PUT            /api/v1/mod/:id/activate/                    controllers.ModController.activate(id : String)
 
 # Board
-POST           /api/mod/board/                          controllers.BoardController.createAsMod()
-GET            /api/mod/board/                          controllers.BoardController.listAsMod(offset : java.lang.Integer ?=0, limit : java.lang.Integer ?= 50)
-GET            /api/mod/board/:id                       controllers.BoardController.loadAsMod(id : String)
-GET            /api/mod/board/:id/slug/                 controllers.BoardController.loadBySlugAsMod(slug : String)
-PUT            /api/mod/board/:id                       controllers.BoardController.updateAsMod(id : String)
-DELETE         /api/mod/board/:id                       controllers.BoardController.deleteAsMod(id : String)
-PUT            /api/mod/board/:id/deactivate/           controllers.BoardController.deactivateAsMod(id : String)
-PUT            /api/mod/board/:id/activate/             controllers.BoardController.activateAsMod(id : String)
+POST           /api/v1/mod/board/                           controllers.BoardController.createAsMod()
+GET            /api/v1/mod/board/                           controllers.BoardController.listAsMod(offset : java.lang.Integer ?=0, limit : java.lang.Integer ?= 50)
+GET            /api/v1/mod/board/:id                        controllers.BoardController.loadAsMod(id : String)
+GET            /api/v1/mod/board/:id/slug/                  controllers.BoardController.loadBySlugAsMod(slug : String)
+PUT            /api/v1/mod/board/:id                        controllers.BoardController.updateAsMod(id : String)
+DELETE         /api/v1/mod/board/:id                        controllers.BoardController.deleteAsMod(id : String)
+PUT            /api/v1/mod/board/:id/deactivate/            controllers.BoardController.deactivateAsMod(id : String)
+PUT            /api/v1/mod/board/:id/activate/              controllers.BoardController.activateAsMod(id : String)
+GET            /api/v1/mod/board/:id/catalog/               controllers.BoardController.catalogAsMod(id : String)
 
 # Thread
 
@@ -105,9 +109,10 @@ PUT            /api/mod/board/:id/activate/             controllers.BoardControl
 #*********************************************************************************************************
 
 # Board
-GET            /api/board/                              controllers.BoardController.list(offset : java.lang.Integer ?=0, limit : java.lang.Integer ?= 50)
-GET            /api/board/:id                           controllers.BoardController.load(id : String)
-GET            /api/board/:id/slug                      controllers.BoardController.loadBySlug(slug : String)
+GET            /api/v1/board/                               controllers.BoardController.list(offset : java.lang.Integer ?=0, limit : java.lang.Integer ?= 50)
+GET            /api/v1/board/:id                            controllers.BoardController.load(id : String)
+GET            /api/v1/board/:id/slug                       controllers.BoardController.loadBySlug(slug : String)
+GET            /api/v1/board/:id/catalog/                   controllers.BoardController.catalog(id : String)
 
 # Thread
 
