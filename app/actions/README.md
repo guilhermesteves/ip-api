@@ -1,6 +1,6 @@
 # App
 
-## Actions
+## Actions Folder
 
 This package contains all the actions (and annotations) for Controllers
 
