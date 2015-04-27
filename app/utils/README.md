@@ -1,6 +1,6 @@
 # App
 
-## Utils
+## Utils Folder
 
 Well, nothing much to be said. Se documentation for yourself in each file.
 
