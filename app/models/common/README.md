@@ -9,7 +9,6 @@ Package to gather all classes used in various different places
 #### Constants
 
 All system constants
-<!-- TODO: make MESSAGES and some constants resource bundles-->
 
 #### DB
 
