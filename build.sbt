@@ -1,10 +1,12 @@
 import sbt.Keys._
 
-name := "tokumei-kokoro"
+name := """tokumei-kokoro"""
 
-version := "1.0"
+version := "1.0-SNAPSHOT"
 
 scalaVersion := "2.11.1"
+
+lazy val root = (project in file(".")).enablePlugins(play.PlayJava)
 
 libraryDependencies ++= Seq(
   jdbc,
@@ -27,6 +29,3 @@ resolvers ++= Seq(
     "jBCrypt Repository" at "http://repo1.maven.org/maven2/org/",
     "Sonatype OSS Snasphots" at "http://oss.sonatype.org/content/repositories/snapshots"
 )
-
-
-lazy val root = (project in file(".")).enablePlugins(play.PlayJava)
