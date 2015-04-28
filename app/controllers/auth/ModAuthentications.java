@@ -10,7 +10,7 @@ import models.common.constants.ClientApp;
 import models.common.constants.Constants;
 import models.common.constants.FIELDS;
 import models.common.constants.MESSAGES;
-import models.common.history.StaffHistory;
+import models.history.StaffHistory;
 import models.common.json.JsonHelper;
 import models.users.Mod;
 import models.users.auth.ModAuth;
