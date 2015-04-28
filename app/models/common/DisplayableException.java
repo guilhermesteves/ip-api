@@ -3,7 +3,7 @@ package models.common;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 /**
- * May the build success be with you.
+ * May the build success be with you
  * With great problems, comes great help from @guilhermesteves
  */
 public class DisplayableException extends RuntimeException {

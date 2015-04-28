@@ -1,7 +1,7 @@
 package models.common.constants;
 
 /**
- * May the build success be with you.
+ * May the build success be with you
  * With great problems, comes great help from @guilhermesteves
  *
  * Rename this file to Locals and put all the credentials

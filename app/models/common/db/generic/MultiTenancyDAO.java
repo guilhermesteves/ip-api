@@ -1,9 +1,8 @@
-package models.common;
+package models.common.db.generic;
 
 /**
  * May the build success be with you
  * With great problems, comes great help from @guilhermesteves
  */
-public interface BaseModel {
-    public String getId();
+public interface MultiTenancyDAO {
 }

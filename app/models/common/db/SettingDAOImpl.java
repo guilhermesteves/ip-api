@@ -6,7 +6,7 @@ import models.system.Setting;
 import org.jongo.MongoCollection;
 
 /**
- * May the build success be with you.
+ * May the build success be with you
  * With great problems, comes great help from @guilhermesteves
  */
 public class SettingDAOImpl extends SimpleDAOImpl<Setting> implements SettingDAO {

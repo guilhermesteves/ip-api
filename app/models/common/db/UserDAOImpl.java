@@ -6,7 +6,7 @@ import models.users.User;
 import org.jongo.MongoCollection;
 
 /**
- * May the build success be with you.
+ * May the build success be with you
  * With great problems, comes great help from @guilhermesteves
  */
 public class UserDAOImpl extends SimpleDAOImpl<User> implements UserDAO {

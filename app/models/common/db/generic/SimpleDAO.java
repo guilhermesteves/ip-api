@@ -6,7 +6,7 @@ import org.jongo.MongoCollection;
 import java.util.List;
 
 /**
- * May the build success be with you.
+ * May the build success be with you
  * With great problems, comes great help from @guilhermesteves
  *
  * Interface which defines all basic methods for
