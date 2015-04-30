@@ -10,15 +10,4 @@ import org.jongo.MongoCollection;
  */
 public class AdminDAOImpl extends SimpleDAOImpl<Admin> implements AdminDAO {
 
-    @Override
-    public Admin loadByEmail(String email) {
-        MongoCollection collection = getCollection(Admin.class);
-        return collection.findOne("{email : #}", email).as(Admin.class);
-    }
-
-    @Override
-    public Admin loadByName(String name) {
-        MongoCollection collection = getCollection(Admin.class);
-        return collection.findOne("{name : #}", name).as(Admin.class);
-    }
 }

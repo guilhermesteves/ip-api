@@ -11,9 +11,4 @@ import org.jongo.MongoCollection;
  */
 public class ModDAOImpl extends SimpleDAOImpl<Mod> implements ModDAO {
 
-    @Override
-    public Mod loadByEmail(String email) {
-        MongoCollection collection = getCollection(Mod.class);
-        return collection.findOne("{email : #}", email).as(Mod.class);
-    }
 }

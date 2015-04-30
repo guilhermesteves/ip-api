@@ -1,6 +1,7 @@
 package models.common.db.generic;
 
 import models.common.BaseModel;
+import models.users.Mod;
 import org.apache.commons.collections.IteratorUtils;
 import org.bson.types.ObjectId;
 import org.jongo.MongoCollection;
@@ -119,6 +120,16 @@ public abstract class SimpleDAOImpl<M extends BaseModel> extends DefaultDAO impl
 
     public void deactivate(String id) {
         getCollection(getModelClass()).update("{ _id: # }", new ObjectId(id)).with("{ active : false }");
+    }
+
+    public M loadByEmail(String email) {
+        MongoCollection collection = getCollection(getModelClass());
+        return (M) collection.findOne("{email : #}", email).as(getModelClass());
+    }
+
+    public M loadByName(String name) {
+        MongoCollection collection = getCollection(getModelClass());
+        return (M) collection.findOne("{name : #}", name).as(getModelClass());
     }
 
 }
