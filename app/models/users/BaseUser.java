@@ -24,12 +24,12 @@ public abstract class BaseUser implements BaseModel {
 
     @Id
     @ObjectId
-    private String id;
+    protected String id;
 
     @Formats.DateTime(pattern = Constants.DATE_PATTERN)
-    public DateTime dateCreation;
-    
-    public Boolean active = true;
+    protected DateTime dateCreation;
+
+    protected Boolean active = true;
 
     //**********************************************************
     // getters and setters
@@ -40,27 +40,12 @@ public abstract class BaseUser implements BaseModel {
         return id;
     }
 
-    public BaseUser setId(String id) {
-        this.id = id;
-        return this;
-    }
-
     public DateTime getDateCreation() {
         return dateCreation;
     }
 
-    public BaseUser setDateCreation(DateTime dateCreation) {
-        this.dateCreation = dateCreation;
-        return this;
-    }
-
     public Boolean getActive() {
         return active;
-    }
-
-    public BaseUser setActive(Boolean active) {
-        this.active = active;
-        return this;
     }
 
     //**********************************************************

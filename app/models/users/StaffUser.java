@@ -19,14 +19,14 @@ public abstract class StaffUser extends BaseUser {
 
     @Required(message="Campo \"email\" é obrigatório.")
     @MaxLength(value=60)
-    private String email;
+    protected String email;
 
     @Required(message="Campo \"nome\" é obrigatório.")
     @MaxLength(value=50)
-    private String name;
+    protected String name;
 
     @Required(message="Campo \"senha\" inválido.")
-    private String password;
+    protected String password;
 
     //**********************************************************
     // getters and setters
@@ -36,27 +36,12 @@ public abstract class StaffUser extends BaseUser {
         return email;
     }
 
-    public StaffUser setEmail(String email) {
-        this.email = email;
-        return this;
-    }
-
     public String getName() {
         return name;
     }
 
-    public StaffUser setName(String name) {
-        this.name = name;
-        return this;
-    }
-
     public String getPassword() {
         return password;
-    }
-
-    public StaffUser setPassword(String password) {
-        this.password = createPassword(password);
-        return this;
     }
 
     //**********************************************************

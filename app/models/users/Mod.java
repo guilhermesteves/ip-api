@@ -12,6 +12,7 @@ import models.common.constants.Constants;
 import models.common.constants.FIELDS;
 import models.common.constants.MESSAGES;
 import models.common.db.factory.SimpleDAOFactory;
+import org.joda.time.DateTime;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +35,38 @@ public class Mod extends StaffUser implements JsonSerializable, Traceable<Mod> {
 
     //**********************************************************
     // getters and setters
+    //**********************************************************
+
+    public Mod setId(String id) {
+        this.id = id;
+        return this;
+    }
+
+    public Mod setDateCreation(DateTime dateCreation) {
+        this.dateCreation = dateCreation;
+        return this;
+    }
+
+    public Mod setActive(Boolean active) {
+        this.active = active;
+        return this;
+    }
+
+    public Mod setEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public Mod setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public Mod setPassword(String password) {
+        this.password = password;
+        return this;
+    }
+
     //**********************************************************
 
     public IbBoardList getModeratingBoards() {

@@ -10,6 +10,7 @@ import models.common.constants.Constants;
 import models.common.constants.FIELDS;
 import models.common.constants.MESSAGES;
 import models.common.db.factory.SimpleDAOFactory;
+import org.joda.time.DateTime;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,38 @@ public class Admin extends StaffUser implements JsonSerializable, Traceable<Admi
 
     //**********************************************************
     // getters and setters
+    //**********************************************************
+
+    public Admin setId(String id) {
+        this.id = id;
+        return this;
+    }
+
+    public Admin setDateCreation(DateTime dateCreation) {
+        this.dateCreation = dateCreation;
+        return this;
+    }
+
+    public Admin setActive(Boolean active) {
+        this.active = active;
+        return this;
+    }
+
+    public Admin setEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public Admin setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public Admin setPassword(String password) {
+        this.password = password;
+        return this;
+    }
+
     //**********************************************************
 
     public Boolean getSuperAdmin() {
