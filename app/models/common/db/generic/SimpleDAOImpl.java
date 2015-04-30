@@ -1,13 +1,10 @@
 package models.common.db.generic;
 
 import models.common.BaseModel;
-import models.users.Mod;
 import org.apache.commons.collections.IteratorUtils;
 import org.bson.types.ObjectId;
 import org.jongo.MongoCollection;
-import uk.co.panaxiom.playjongo.PlayJongo;
 
-import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 /**
@@ -16,23 +13,19 @@ import java.util.List;
  *
  * Implementation of the SimpleDAO Interface
  */
-public abstract class SimpleDAOImpl<M extends BaseModel> extends DefaultDAO implements SimpleDAO<M> {
+public abstract class SimpleDAOImpl<M extends BaseModel> extends DefaultDAOImpl<M> implements SimpleDAO<M> {
 
     //**********************************************************
     // constructor
     //**********************************************************
 
     public SimpleDAOImpl() {
-        modelClass = (Class<M>) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+        super();
     }
 
     //**********************************************************
     // CRUD methods
     //**********************************************************
-
-    public void save(M model) {
-        getCollection(model.getClass()).save(model);
-    }
 
     public void create(M model) {
         getCollection(model.getClass()).insert(model);
@@ -47,8 +40,7 @@ public abstract class SimpleDAOImpl<M extends BaseModel> extends DefaultDAO impl
     }
 
     public M load(ObjectId id, Class<M> _class) {
-        MongoCollection collection = getCollection(_class);
-        return collection.findOne(id).as(_class);
+        return getCollection(_class).findOne(id).as(_class);
     }
 
     public void update(M model) {
@@ -76,56 +68,25 @@ public abstract class SimpleDAOImpl<M extends BaseModel> extends DefaultDAO impl
         collection.remove(id);
     }
 
-    public Iterable<M> find(Integer offset, Integer limit) {
-        MongoCollection mongoCollection = getCollection(getModelClass());
-
-        return mongoCollection.find().skip(offset).limit(limit).as(getModelClass());
-    }
-
-    public Iterable<M> find(String query, Integer offset, Integer limit) {
-        MongoCollection mongoCollection = getCollection(getModelClass());
-
-        return mongoCollection.find(query).skip(offset).limit(limit).as(getModelClass());
-    }
-
-    public List<M> listAll(Integer offset, Integer limit) {
-        Iterable<M> iterable = getCollection(getModelClass()).find().as(getModelClass());
-
-        if(iterable != null)
-            return IteratorUtils.toList(iterable.iterator());
-
-        return null;
+    public List<M> listAll() {
+        return listAll(0, 50, getModelClass());
     }
 
     public List<M> listAll(Class<M> _class) {
-        Iterable<M> iterable = getCollection(_class).find().as(_class);
+        return listAll(0, 50, _class);
+    }
+
+    public List<M> listAll(Integer offset, Integer limit) {
+        return listAll(offset, limit, getModelClass());
+    }
+
+    public List<M> listAll(Integer offset, Integer limit, Class<M> _class) {
+        Iterable<M> iterable = getCollection(_class).find().skip(offset).limit(limit).as(_class);
 
         if(iterable != null)
             return IteratorUtils.toList(iterable.iterator());
 
         return null;
-    }
-
-    //**********************************************************
-    // MongoDB Methods
-    //**********************************************************
-
-    public M loadByQuery(String query) {
-        MongoCollection collection = getCollection(getModelClass());
-        return (M) collection.findOne(query).as(getModelClass());
-    }
-
-    public List<M> listByQuery(String query) {
-        MongoCollection collection = getCollection(getModelClass());
-        return (List<M>) collection.find(query).as(getModelClass());
-    }
-
-    public Long count(Class<M> _class) {
-        return getCollection(_class).count();
-    }
-
-    public Long count(String query, Class<M> _class) {
-        return getCollection(_class).count(query);
     }
 
     //**********************************************************
