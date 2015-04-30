@@ -10,14 +10,14 @@ import java.util.List;
  * May the build success be with you
  * With great problems, comes great help from @guilhermesteves
  */
-public abstract class MultiTenancyDAOImpl<M extends BaseModel> extends DefaultDAOImpl<M> implements SimpleDAO<M> {
+public abstract class MultiTenancyDAOImpl<M extends BaseModel> extends DefaultDAOImpl<M> implements MultiTenancyDAO<M> {
 
     public void create(M model) {
         getCollection(model.getClass()).insert(model);
     }
 
-    public M load(ObjectId id) {
-        return (M) getCollection(getModelClass()).findOne("{_id : #}", id).as(getModelClass());
+    public M load(String id) {
+        return load(new ObjectId(id), getModelClass());
     }
 
     public M load(String id, String tenantId) {
@@ -26,6 +26,10 @@ public abstract class MultiTenancyDAOImpl<M extends BaseModel> extends DefaultDA
 
     public M load(String id, String tenantId, Class<M> _class) {
         return load(new ObjectId(id), new ObjectId(tenantId), _class);
+    }
+
+    public M load(ObjectId id, Class<M> _class) {
+        return getCollection(_class).findOne(id).as(_class);
     }
 
     public M load(ObjectId id, ObjectId tenantId, Class<M> _class) {
