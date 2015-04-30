@@ -18,10 +18,17 @@ import java.util.List;
  */
 public abstract class SimpleDAOImpl<M extends BaseModel> extends DefaultDAO implements SimpleDAO<M> {
 
-    // I have to say that I'm really proud of this solution
+    //**********************************************************
+    // constructor
+    //**********************************************************
+
     public SimpleDAOImpl() {
         modelClass = (Class<M>) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
+
+    //**********************************************************
+    // CRUD methods
+    //**********************************************************
 
     public void save(M model) {
         getCollection(model.getClass()).save(model);
@@ -42,11 +49,6 @@ public abstract class SimpleDAOImpl<M extends BaseModel> extends DefaultDAO impl
     public M load(ObjectId id, Class<M> _class) {
         MongoCollection collection = getCollection(_class);
         return collection.findOne(id).as(_class);
-    }
-
-    public M loadByQuery(String query) {
-        MongoCollection collection = getCollection(getModelClass());
-        return (M) collection.findOne(query).as(getModelClass());
     }
 
     public void update(M model) {
@@ -104,6 +106,15 @@ public abstract class SimpleDAOImpl<M extends BaseModel> extends DefaultDAO impl
         return null;
     }
 
+    //**********************************************************
+    // MongoDB Methods
+    //**********************************************************
+
+    public M loadByQuery(String query) {
+        MongoCollection collection = getCollection(getModelClass());
+        return (M) collection.findOne(query).as(getModelClass());
+    }
+
     public List<M> listByQuery(String query) {
         MongoCollection collection = getCollection(getModelClass());
         return (List<M>) collection.find(query).as(getModelClass());
@@ -113,6 +124,13 @@ public abstract class SimpleDAOImpl<M extends BaseModel> extends DefaultDAO impl
         return getCollection(_class).count();
     }
 
+    public Long count(String query, Class<M> _class) {
+        return getCollection(_class).count(query);
+    }
+
+    //**********************************************************
+    // State methods
+    //**********************************************************
 
     public void activate(String id) {
         getCollection(getModelClass()).update("{ _id: # }", new ObjectId(id)).with("{ active : true }");
@@ -121,6 +139,10 @@ public abstract class SimpleDAOImpl<M extends BaseModel> extends DefaultDAO impl
     public void deactivate(String id) {
         getCollection(getModelClass()).update("{ _id: # }", new ObjectId(id)).with("{ active : false }");
     }
+
+    //**********************************************************
+    // Field Load methods
+    //**********************************************************
 
     public M loadByEmail(String email) {
         MongoCollection collection = getCollection(getModelClass());
@@ -131,5 +153,4 @@ public abstract class SimpleDAOImpl<M extends BaseModel> extends DefaultDAO impl
         MongoCollection collection = getCollection(getModelClass());
         return (M) collection.findOne("{name : #}", name).as(getModelClass());
     }
-
 }
