@@ -1,24 +1,25 @@
 package models.common.db.factory;
 
-import models.common.db.*;
+import models.common.db.IbPostDAO;
+import models.common.db.IbThreadDAO;
 
 /**
- * May the build success be with you
+ * May the build success be with you.
  * With great problems, comes great help from @guilhermesteves
  */
-public abstract class SimpleDAOFactory {
+public abstract class MultiTenancyDAOFactory {
 
     //**********************************************************
     // properties
     //**********************************************************
 
-    private static final SimpleDAOFactory factory = new SimpleDAOFactoryImpl();
+    private static final MultiTenancyDAOFactory factory = new MultiTenancyDAOFactoryImpl();
 
     //**********************************************************
     // instance
     //**********************************************************
 
-    public static SimpleDAOFactory getInstance() {
+    public static MultiTenancyDAOFactory getInstance() {
         return factory;
     }
 
@@ -26,12 +27,7 @@ public abstract class SimpleDAOFactory {
     // interfaces
     //**********************************************************
 
-    public abstract AdminDAO getAdminDAO();
-    public abstract ModDAO getModDAO();
-    public abstract UserDAO getUserDAO();
 
-    public abstract IbBoardDAO getBoardDAO();
-
-    public abstract StaffHistoryDAO getStaffHistoryDAO();
-    public abstract SettingDAO getSettingDAO();
+    public abstract IbThreadDAO getThreadDAO();
+    public abstract IbPostDAO getPostDAO();
 }

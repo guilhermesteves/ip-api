@@ -24,12 +24,6 @@ public class SimpleDAOFactoryImpl extends SimpleDAOFactory {
     public IbBoardDAO getBoardDAO() {
         return new IbBoardDAOImpl();
     }
-    public IbThreadDAO getThreadDAO() {
-        return new IbThreadDAOImpl();
-    }
-    public IbPostDAO getPostDAO() {
-        return new IbPostDAOImpl();
-    }
 
     public StaffHistoryDAO getStaffHistoryDAO() {
         return new StaffHistoryDAOImpl();
