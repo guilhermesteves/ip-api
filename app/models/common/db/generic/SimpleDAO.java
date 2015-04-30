@@ -37,13 +37,9 @@ public interface SimpleDAO<M extends BaseModel> extends DefaultDAO<M> {
     void activate(String id);
     void deactivate(String id);
 
-    M loadByQuery(String query);
+    // Fields
 
-    List<M> listByQuery(String query);
+    M loadByEmail(String email);
 
-    Iterable<M> find(Integer offset, Integer limit);
-    Iterable<M> find(String query, Integer offset, Integer limit);
-
-    Long count(Class<M> _class);
-    Long count(String query, Class<M> _class);
+    M loadByName(String name);
 }

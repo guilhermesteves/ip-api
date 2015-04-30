@@ -27,6 +27,8 @@ public interface DefaultDAO<M> {
     Iterable<M> find(Integer offset, Integer limit);
     Iterable<M> find(String query, Integer offset, Integer limit);
 
+    M loadBy(String field, String value);
+
     M loadByQuery(String query);
     M loadByQuery(String query, Class<M> _class);
 

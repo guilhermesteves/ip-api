@@ -76,6 +76,11 @@ public abstract class DefaultDAOImpl<M> {
         return mongoCollection.find(query).skip(offset).limit(limit).as(getModelClass());
     }
 
+    public M loadBy(String field, String value) {
+        MongoCollection collection = getCollection(getModelClass());
+        return (M) collection.findOne("{# : #}", field, value).as(getModelClass());
+    }
+
     public M loadByQuery(String query) {
         return loadByQuery(query, getModelClass());
     }
