@@ -14,7 +14,7 @@ Right now, we have a layer of abstraction on how we can save a model (as how it 
 
 ##### The Abstraction Layer
 
-Well, 2 DAOs (**SimpleDAO** and **MultiTenancyDAO**) extends **DefaultDAO** and make their own set of abstractions. Those specific/model DAO whose will be a non partent should extend **SimpleDAO** and the childs **MultiTenancyDAO**.
+Well, 2 DAOs ( **SimpleDAO** and **MultiTenancyDAO** ) extends **DefaultDAO** and make their own set of abstractions. Those specific/model DAO whose will be a non partent should extend **SimpleDAO** and the childs **MultiTenancyDAO**.
 
 Keep in mind that all simplification can come in handy, as well has it's cost.
 
