@@ -11,6 +11,10 @@ import com.fasterxml.jackson.databind.JsonNode;
  */
 public interface JsonSerializable  {
 
+    default JsonNode toJson() {
+        return this.toJson(JsonContext.DEFAULT);
+    }
+
     public JsonNode toJson(String context);
 
 }
