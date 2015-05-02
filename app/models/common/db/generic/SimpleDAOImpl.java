@@ -32,7 +32,7 @@ public abstract class SimpleDAOImpl<M extends BaseModel> extends DefaultDAOImpl<
     }
 
     public M load(String id) {
-        return load(new ObjectId(id), getModelClass());
+        return (M) load(new ObjectId(id), getModelClass());
     }
 
     public M load(String id, Class<M> _class) {
@@ -40,7 +40,7 @@ public abstract class SimpleDAOImpl<M extends BaseModel> extends DefaultDAOImpl<
     }
 
     public M load(ObjectId id, Class<M> _class) {
-        return getCollection(_class).findOne(id).as(_class);
+        return (M) getCollection(_class).findOne(id).as(_class);
     }
 
     public void update(M model) {

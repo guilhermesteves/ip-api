@@ -27,7 +27,7 @@ public class IbBoardDAOImpl extends SimpleDAOImpl<IbBoard> implements IbBoardDAO
     }
 
     @Override
-    public IbThreadList loadCatalog() {
+    public IbThreadList loadCatalog(String id) {
         // TODO: CATALOG DAO
         return null;
     }

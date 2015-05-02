@@ -17,11 +17,11 @@ public abstract class MultiTenancyDAOImpl<M extends BaseModel> extends DefaultDA
     }
 
     public M load(String id) {
-        return load(new ObjectId(id), getModelClass());
+        return (M) load(new ObjectId(id), getModelClass());
     }
 
     public M load(String id, String tenantId) {
-        return load(new ObjectId(id), new ObjectId(tenantId), getModelClass());
+        return (M) load(new ObjectId(id), new ObjectId(tenantId), getModelClass());
     }
 
     public M load(String id, String tenantId, Class<M> _class) {

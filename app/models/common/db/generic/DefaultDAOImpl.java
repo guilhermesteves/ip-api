@@ -82,11 +82,12 @@ public abstract class DefaultDAOImpl<M> {
     }
 
     public M loadByQuery(String query) {
-        return loadByQuery(query, getModelClass());
+        return (M) loadByQuery(query, getModelClass());
     }
 
     public M loadByQuery(String query, Class<M> _class) {
-        return getCollection(getModelClass()).findOne(query).as(_class);
+        MongoCollection collection = getCollection(_class);
+        return (M) collection.findOne(query).as(_class);
     }
 
     public List<M> listByQuery(String query) {

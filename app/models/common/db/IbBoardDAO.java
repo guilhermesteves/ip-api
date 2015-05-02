@@ -14,5 +14,5 @@ public interface IbBoardDAO extends SimpleDAO<IbBoard> {
 
     IbBoard loadByLongSlug(String longSlug);
 
-    IbThreadList loadCatalog();
+    IbThreadList loadCatalog(String id);
 }
