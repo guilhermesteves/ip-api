@@ -95,7 +95,7 @@ public class AdminController extends Controller {
     }
 
     @AdminAction(superAdmin = true)
-    public static Result update(String id) {
+    public static Result updateById(String id) {
 
         Admin toUpdate = Admin.load(id);
 

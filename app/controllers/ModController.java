@@ -100,7 +100,7 @@ public class ModController extends Controller {
     }
 
     @ModAction(modLevel = 0)
-    public static Result update(String id) {
+    public static Result updateById(String id) {
 
         Mod toUpdate = Mod.load(id);
 
