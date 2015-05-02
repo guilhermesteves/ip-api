@@ -9,6 +9,7 @@ import models.common.json.JsonSerializable;
 import models.common.constants.Constants;
 import models.common.constants.FIELDS;
 import models.common.db.factory.SimpleDAOFactory;
+import org.joda.time.DateTime;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +36,18 @@ public class User extends BaseUser implements JsonSerializable, Traceable<User> 
 
     //**********************************************************
     // getters and setters
+    //**********************************************************
+
+    public User setId(String id) {
+        this.id = id;
+        return this;
+    }
+
+    public User setActive(Boolean active) {
+        this.active = active;
+        return this;
+    }
+
     //**********************************************************
 
     public String getIp() {
@@ -92,7 +105,9 @@ public class User extends BaseUser implements JsonSerializable, Traceable<User> 
     public void create() {
         Validator.validate(this);
 
-        setVisualId(generateVisualId());
+        this.setDateCreation(new DateTime());
+
+        this.setVisualId(generateVisualId());
         SimpleDAOFactory.getInstance().getUserDAO().create(this);
     }
 

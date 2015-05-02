@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import models.IbBoardList;
 import models.IbBoard;
 import models.common.DisplayableException;
+import models.common.Validator;
 import models.common.json.JsonContext;
 import models.common.json.JsonHelper;
 import models.common.json.JsonSerializable;
@@ -39,11 +40,6 @@ public class Mod extends StaffUser implements JsonSerializable, Traceable<Mod> {
 
     public Mod setId(String id) {
         this.id = id;
-        return this;
-    }
-
-    public Mod setDateCreation(DateTime dateCreation) {
-        this.dateCreation = dateCreation;
         return this;
     }
 
@@ -112,6 +108,10 @@ public class Mod extends StaffUser implements JsonSerializable, Traceable<Mod> {
     
     public void create() {
         checkEmail();
+        Validator.validate(this);
+
+        this.setDateCreation(new DateTime());
+
         SimpleDAOFactory.getInstance().getModDAO().create(this);
     }
 

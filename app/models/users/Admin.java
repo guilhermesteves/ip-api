@@ -1,6 +1,7 @@
 package models.users;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import models.common.Validator;
 import models.history.Traceable;
 import models.common.DisplayableException;
 import models.common.json.JsonContext;
@@ -38,11 +39,6 @@ public class Admin extends StaffUser implements JsonSerializable, Traceable<Admi
 
     public Admin setId(String id) {
         this.id = id;
-        return this;
-    }
-
-    public Admin setDateCreation(DateTime dateCreation) {
-        this.dateCreation = dateCreation;
         return this;
     }
 
@@ -97,6 +93,9 @@ public class Admin extends StaffUser implements JsonSerializable, Traceable<Admi
 
     public void create() {
         checkEmail();
+
+        Validator.validate(this);
+
         SimpleDAOFactory.getInstance().getAdminDAO().create(this);
     }
 
@@ -178,6 +177,8 @@ public class Admin extends StaffUser implements JsonSerializable, Traceable<Admi
     //**********************************************************
     // json
     //**********************************************************
+
+
 
     @Override
     public JsonNode toJson(String context) {

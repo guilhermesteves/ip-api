@@ -2,12 +2,9 @@ package models.users;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import models.common.db.factory.SimpleDAOFactory;
-import models.common.db.generic.DefaultDAO;
 import models.common.json.JsonListSerializer;
 import models.common.json.JsonSerializable;
-import models.common.db.generic.SimpleDAOImpl;
 import org.apache.commons.collections.IteratorUtils;
-import org.jongo.MongoCollection;
 
 import java.util.ArrayList;
 import java.util.Collection;

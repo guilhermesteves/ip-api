@@ -44,6 +44,10 @@ public abstract class BaseUser implements BaseModel {
         return dateCreation;
     }
 
+    protected void setDateCreation(DateTime dateCreation) {
+        this.dateCreation = dateCreation;
+    }
+
     public Boolean getActive() {
         return active;
     }
