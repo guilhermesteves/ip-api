@@ -12,6 +12,8 @@ import models.common.constants.FIELDS;
 import models.common.constants.MESSAGES;
 import models.common.db.factory.SimpleDAOFactory;
 import org.joda.time.DateTime;
+import org.jongo.marshall.jackson.oid.Id;
+import org.jongo.marshall.jackson.oid.ObjectId;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +30,10 @@ public class Admin extends StaffUser implements JsonSerializable, Traceable<Admi
     // properties
     //**********************************************************
 
+    @Id
+    @ObjectId
+    protected String id;
+
     // This is here only to remind everyone thatit exists,
     // but all super admin must be setted directly in
     // database. This will, hopefully, any security breach.
@@ -36,6 +42,11 @@ public class Admin extends StaffUser implements JsonSerializable, Traceable<Admi
     //**********************************************************
     // getters and setters
     //**********************************************************
+
+    @Override
+    public String getId() {
+        return id;
+    }
 
     public Admin setId(String id) {
         this.id = id;

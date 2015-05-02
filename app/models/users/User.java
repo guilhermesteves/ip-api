@@ -1,15 +1,17 @@
 package models.users;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import models.history.Traceable;
 import models.common.Validator;
-import models.common.json.JsonContext;
-import models.common.json.JsonHelper;
-import models.common.json.JsonSerializable;
 import models.common.constants.Constants;
 import models.common.constants.FIELDS;
 import models.common.db.factory.SimpleDAOFactory;
+import models.common.json.JsonContext;
+import models.common.json.JsonHelper;
+import models.common.json.JsonSerializable;
+import models.history.Traceable;
 import org.joda.time.DateTime;
+import org.jongo.marshall.jackson.oid.Id;
+import org.jongo.marshall.jackson.oid.ObjectId;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +28,10 @@ public class User extends BaseUser implements JsonSerializable, Traceable<User> 
     // properties
     //**********************************************************
 
+    @Id
+    @ObjectId
+    protected String id;
+
     private String ip;
 
     private String visualId;
@@ -37,6 +43,11 @@ public class User extends BaseUser implements JsonSerializable, Traceable<User> 
     //**********************************************************
     // getters and setters
     //**********************************************************
+
+    @Override
+    public String getId() {
+        return id;
+    }
 
     public User setId(String id) {
         this.id = id;

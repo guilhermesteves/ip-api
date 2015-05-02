@@ -1,19 +1,21 @@
 package models.users;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import models.IbBoardList;
 import models.IbBoard;
+import models.IbBoardList;
 import models.common.DisplayableException;
 import models.common.Validator;
-import models.common.json.JsonContext;
-import models.common.json.JsonHelper;
-import models.common.json.JsonSerializable;
-import models.history.Traceable;
 import models.common.constants.Constants;
 import models.common.constants.FIELDS;
 import models.common.constants.MESSAGES;
 import models.common.db.factory.SimpleDAOFactory;
+import models.common.json.JsonContext;
+import models.common.json.JsonHelper;
+import models.common.json.JsonSerializable;
+import models.history.Traceable;
 import org.joda.time.DateTime;
+import org.jongo.marshall.jackson.oid.Id;
+import org.jongo.marshall.jackson.oid.ObjectId;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +32,10 @@ public class Mod extends StaffUser implements JsonSerializable, Traceable<Mod> {
     // properties
     //**********************************************************
 
+    @Id
+    @ObjectId
+    protected String id;
+
     private IbBoardList moderatingBoards;
 
     private ModLevel accessLevel;
@@ -37,6 +43,11 @@ public class Mod extends StaffUser implements JsonSerializable, Traceable<Mod> {
     //**********************************************************
     // getters and setters
     //**********************************************************
+
+    @Override
+    public String getId() {
+        return id;
+    }
 
     public Mod setId(String id) {
         this.id = id;

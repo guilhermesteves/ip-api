@@ -22,10 +22,6 @@ public abstract class BaseUser implements BaseModel {
     // properties
     //**********************************************************
 
-    @Id
-    @ObjectId
-    protected String id;
-
     @Formats.DateTime(pattern = Constants.DATE_PATTERN)
     protected DateTime dateCreation;
 
@@ -35,16 +31,11 @@ public abstract class BaseUser implements BaseModel {
     // getters and setters
     //**********************************************************
 
-    @Override
-    public String getId() {
-        return id;
-    }
-
     public DateTime getDateCreation() {
         return dateCreation;
     }
 
-    protected void setDateCreation(DateTime dateCreation) {
+    public void setDateCreation(DateTime dateCreation) {
         this.dateCreation = dateCreation;
     }
 
@@ -55,8 +46,11 @@ public abstract class BaseUser implements BaseModel {
     //**********************************************************
 
     public Integer getLoyalty() {
-        return Days.daysBetween(getDateCreation().withTimeAtStartOfDay(),
+        if (getDateCreation() != null)
+            return Days.daysBetween(getDateCreation().withTimeAtStartOfDay(),
                 new DateTime().withTimeAtStartOfDay()).getDays();
+        else
+            return 0;
     }
 
     //**********************************************************
