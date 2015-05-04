@@ -12,11 +12,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Guilherme Esteves (@guilhermesteves)
- * Date: 3/8/15
- * Time: 3:12 AM
  * May the build success be with you
+ * With great problems, comes great help from @guilhermesteves
+ *
+ * Object to list Boards
  */
 public class IbBoardList extends ArrayList<IbBoard> implements JsonSerializable {
 

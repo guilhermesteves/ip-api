@@ -17,11 +17,14 @@ import play.mvc.Result;
 import utils.Utils;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Guilherme Esteves (@guilhermesteves)
- * Date: 4/4/15
- * Time: 6:41 PM
  * May the build success be with you
+ * With great problems, comes great help from @guilhermesteves
+ *
+ * All methods for manipulating Boards belongs
+ * here in this Controller
+ *
+ * @see models.IbBoard
+ * @see models.IbBoardList
  */
 @Cors
 @Error

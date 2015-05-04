@@ -18,11 +18,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Guilherme Esteves (@guilhermesteves)
- * Date: 3/8/15
- * Time: 3:12 AM
  * May the build success be with you
+ * With great problems, comes great help from @guilhermesteves
+ *
+ * All methods belonging the Boards access and business is here
  */
 public class IbBoard implements BaseModel, JsonSerializable, Traceable<IbBoard> {
 
