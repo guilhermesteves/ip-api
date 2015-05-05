@@ -24,7 +24,7 @@ public class MESSAGES {
     public static final String INCORRECT_PASSWORD = "Senha incorreta";
     private static final String _NOT_FOUND = " não encontrado";
     private static final String ALREADY_ = "Já existe um ";
-    private static final String _EXISTS = "  cadastrado";
+    private static final String _EXISTS = " cadastrado";
     private static final String _WITH_THESE_ = " com esse ";
     private static final String EMAIL = "email";
     private static final String NAME = "nome";
