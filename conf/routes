@@ -49,7 +49,7 @@ POST           /api/v1/admin/                               controllers.AdminCon
 GET            /api/v1/admin/                               controllers.AdminController.list(offset : java.lang.Integer ?=0, limit : java.lang.Integer ?= 50,  superAdmin : java.lang.Boolean ?= null)
 GET            /api/v1/admin/:id                            controllers.AdminController.load(id : String)
 PUT            /api/v1/admin/                               controllers.AdminController.update()
-PUT            /api/v1/admin/:id                            controllers.AdminController.update(id : String)
+PUT            /api/v1/admin/:id                            controllers.AdminController.updateById(id : String)
 DELETE         /api/v1/admin/:id                            controllers.AdminController.delete(id : String)
 PUT            /api/v1/admin/:id/deactivate/                controllers.AdminController.deactivate(id : String)
 PUT            /api/v1/admin/:id/activate/                  controllers.AdminController.activate(id : String)
@@ -67,12 +67,12 @@ PUT            /api/v1/admin/mod/:id/activate/              controllers.ModContr
 POST           /api/v1/admin/board/                         controllers.BoardController.createAsAdmin()
 GET            /api/v1/admin/board/                         controllers.BoardController.listAsAdmin(offset : java.lang.Integer ?=0, limit : java.lang.Integer ?= 50)
 GET            /api/v1/admin/board/:id                      controllers.BoardController.loadAsAdmin(id : String)
-GET            /api/v1/admin/board/:id/slug/                controllers.BoardController.loadBySlugAsAdmin(slug : String)
+GET            /api/v1/admin/board/:slug/slug/              controllers.BoardController.loadBySlugAsAdmin(slug : String)
 PUT            /api/v1/admin/board/:id                      controllers.BoardController.updateAsAdmin(id : String)
 DELETE         /api/v1/admin/board/:id                      controllers.BoardController.deleteAsAdmin(id : String)
 PUT            /api/v1/admin/board/:id/deactivate/          controllers.BoardController.deactivateAsAdmin(id : String)
 PUT            /api/v1/admin/board/:id/activate/            controllers.BoardController.activateAsAdmin(id : String)
-GET            /api/v1/admin/board/:id/catalog/             controllers.BoardController.catalogAsAdmin(id : String)
+GET            /api/v1/admin/board/:slug/catalog/           controllers.BoardController.catalogAsAdmin(slug : String)
 
 # Thread
 
@@ -86,7 +86,7 @@ POST           /api/v1/mod/                                 controllers.ModContr
 GET            /api/v1/mod/                                 controllers.ModController.list(offset : java.lang.Integer ?=0, limit : java.lang.Integer ?= 50,  modLevel : java.lang.Integer ?= null, board : String ?= null)
 GET            /api/v1/mod/:id                              controllers.ModController.load(id : String)
 PUT            /api/v1/mod/                                 controllers.ModController.update()
-PUT            /api/v1/mod/:id                              controllers.ModController.update(id : String)
+PUT            /api/v1/mod/:id                              controllers.ModController.updateById(id : String)
 DELETE         /api/v1/mod/:id                              controllers.ModController.delete(id : String)
 PUT            /api/v1/mod/:id/deactivate/                  controllers.ModController.deactivate(id : String)
 PUT            /api/v1/mod/:id/activate/                    controllers.ModController.activate(id : String)
@@ -95,12 +95,12 @@ PUT            /api/v1/mod/:id/activate/                    controllers.ModContr
 POST           /api/v1/mod/board/                           controllers.BoardController.createAsMod()
 GET            /api/v1/mod/board/                           controllers.BoardController.listAsMod(offset : java.lang.Integer ?=0, limit : java.lang.Integer ?= 50)
 GET            /api/v1/mod/board/:id                        controllers.BoardController.loadAsMod(id : String)
-GET            /api/v1/mod/board/:id/slug/                  controllers.BoardController.loadBySlugAsMod(slug : String)
+GET            /api/v1/mod/board/slug/:slug                 controllers.BoardController.loadBySlugAsMod(slug : String)
 PUT            /api/v1/mod/board/:id                        controllers.BoardController.updateAsMod(id : String)
 DELETE         /api/v1/mod/board/:id                        controllers.BoardController.deleteAsMod(id : String)
 PUT            /api/v1/mod/board/:id/deactivate/            controllers.BoardController.deactivateAsMod(id : String)
 PUT            /api/v1/mod/board/:id/activate/              controllers.BoardController.activateAsMod(id : String)
-GET            /api/v1/mod/board/:id/catalog/               controllers.BoardController.catalogAsMod(id : String)
+GET            /api/v1/mod/board/:slug/catalog/             controllers.BoardController.catalogAsMod(slug : String)
 
 # Thread
 
@@ -111,8 +111,8 @@ GET            /api/v1/mod/board/:id/catalog/               controllers.BoardCon
 # Board
 GET            /api/v1/board/                               controllers.BoardController.list(offset : java.lang.Integer ?=0, limit : java.lang.Integer ?= 50)
 GET            /api/v1/board/:id                            controllers.BoardController.load(id : String)
-GET            /api/v1/board/:id/slug                       controllers.BoardController.loadBySlug(slug : String)
-GET            /api/v1/board/:id/catalog/                   controllers.BoardController.catalog(id : String)
+GET            /api/v1/board/:slug/slug                     controllers.BoardController.loadBySlug(slug : String)
+GET            /api/v1/board/:slug/catalog/                 controllers.BoardController.catalog(slug : String)
 
 # Thread
 
