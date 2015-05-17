@@ -40,7 +40,6 @@ conf/email.properties
 /RUNNING_PID
 target
 project/project
-logs
 dist
 
 # The tests are not ready to push to repository
