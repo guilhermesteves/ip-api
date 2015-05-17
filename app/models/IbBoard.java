@@ -34,7 +34,11 @@ public class IbBoard implements BaseModel, JsonSerializable, Traceable<IbBoard> 
     private String id;
 
     private Boolean active;
+    @Constraints.Required(message="\"Nome\" é obrigatório.")
     private String name;
+
+    @Constraints.Required(message="\"Description\" é obrigatório.")
+    private String description;
 
     @Constraints.Required(message="\"Slug\" é obrigatório.")
     @Constraints.MinLength(value=1,message="\"Slug\" deve possuir no mínimo 1 caracteres.")
@@ -42,7 +46,7 @@ public class IbBoard implements BaseModel, JsonSerializable, Traceable<IbBoard> 
     private String slug;
     private String longSlug;
 
-    private Integer maxThreads = 10;
+    private Integer maxThreads = 50;
     private Boolean hasCatalog = true;
 
     private IbThreadList threads;
@@ -75,6 +79,15 @@ public class IbBoard implements BaseModel, JsonSerializable, Traceable<IbBoard> 
 
     public IbBoard setName(String name) {
         this.name = name;
+        return this;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public IbBoard setDescription(String description) {
+        this.description = description;
         return this;
     }
 
@@ -134,11 +147,11 @@ public class IbBoard implements BaseModel, JsonSerializable, Traceable<IbBoard> 
 
     public void create() {
         checkSlug();
-        SimpleDAOFactory.getInstance().getBoardDAO().create(this);
+        SimpleDAOFactory.getInstance().getIbBoardDAO().create(this);
     }
 
     public static IbBoard load(String id) {
-        return SimpleDAOFactory.getInstance().getBoardDAO().load(id);
+        return SimpleDAOFactory.getInstance().getIbBoardDAO().load(id);
     }
 
     public void update(IbBoard ibBoard) {
@@ -163,28 +176,28 @@ public class IbBoard implements BaseModel, JsonSerializable, Traceable<IbBoard> 
 
         checkSlug();
 
-        SimpleDAOFactory.getInstance().getBoardDAO().update(this);
+        SimpleDAOFactory.getInstance().getIbBoardDAO().update(this);
     }
 
     public static void delete(String id) {
-        SimpleDAOFactory.getInstance().getBoardDAO().delete(id);
+        SimpleDAOFactory.getInstance().getIbBoardDAO().delete(id);
     }
 
     //**********************************************************
 
     public static IbBoard loadBySlug(String slug) {
-        return SimpleDAOFactory.getInstance().getBoardDAO().loadBySlug(slug);
+        return SimpleDAOFactory.getInstance().getIbBoardDAO().loadBySlug(slug);
     }
 
     public static IbBoard loadByLongSlug(String longSlug) {
-        return SimpleDAOFactory.getInstance().getBoardDAO().loadByLongSlug(longSlug);
+        return SimpleDAOFactory.getInstance().getIbBoardDAO().loadByLongSlug(longSlug);
     }
 
     public static IbThreadList loadCatalogById(String id) {
         IbBoard ibBoard = IbBoard.load(id);
 
         if (ibBoard != null && ibBoard.getHasCatalog())
-            return SimpleDAOFactory.getInstance().getBoardDAO().loadCatalog(ibBoard.getId());
+            return SimpleDAOFactory.getInstance().getIbBoardDAO().loadCatalog(ibBoard.getId());
         else
             return null;
     }
@@ -193,7 +206,7 @@ public class IbBoard implements BaseModel, JsonSerializable, Traceable<IbBoard> 
         IbBoard ibBoard = IbBoard.loadBySlug(slug);
 
         if (ibBoard != null && ibBoard.getHasCatalog())
-            return SimpleDAOFactory.getInstance().getBoardDAO().loadCatalog(ibBoard.getId());
+            return SimpleDAOFactory.getInstance().getIbBoardDAO().loadCatalog(ibBoard.getId());
         else
             return null;
     }
@@ -201,11 +214,11 @@ public class IbBoard implements BaseModel, JsonSerializable, Traceable<IbBoard> 
     //**********************************************************
 
     public void activate() {
-        SimpleDAOFactory.getInstance().getBoardDAO().activate(getId());
+        SimpleDAOFactory.getInstance().getIbBoardDAO().activate(getId());
     }
 
     public void deactivate() {
-        SimpleDAOFactory.getInstance().getBoardDAO().deactivate(getId());
+        SimpleDAOFactory.getInstance().getIbBoardDAO().deactivate(getId());
     }
 
     //**********************************************************
@@ -214,7 +227,7 @@ public class IbBoard implements BaseModel, JsonSerializable, Traceable<IbBoard> 
 
     @Override
     public String getDetails() {
-        return "Admin. Nome: "+ getName() +" | Slug: "+ getSlug();
+        return "Board. Nome: "+ getName() +" | Slug: "+ getSlug();
     }
 
     @Override

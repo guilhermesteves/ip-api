@@ -26,12 +26,16 @@ public abstract class SimpleDAOFactory {
     // interfaces
     //**********************************************************
 
+    // Users
     public abstract AdminDAO getAdminDAO();
     public abstract ModDAO getModDAO();
     public abstract UserDAO getUserDAO();
 
-    public abstract IbBoardDAO getBoardDAO();
+    // Boards
+    public abstract IbBoardSectionDAO getIbBoardSectionDAO();
+    public abstract IbBoardDAO getIbBoardDAO();
 
+    // Others
     public abstract StaffHistoryDAO getStaffHistoryDAO();
     public abstract SettingDAO getSettingDAO();
 }

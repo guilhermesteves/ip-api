@@ -78,6 +78,13 @@ public class FIELDS {
 
     }
 
+    public static class BOARD_SECTION {
+        public static final String ID = DEFAULT_ID;
+
+        public static final String NAME = "name";
+        public static final String ORDER = "order";
+    }
+
     public static class SETTINGS {
         public static final String ID = DEFAULT_ID;
 

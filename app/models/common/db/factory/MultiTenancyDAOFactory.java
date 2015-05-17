@@ -27,7 +27,6 @@ public abstract class MultiTenancyDAOFactory {
     // interfaces
     //**********************************************************
 
-
     public abstract IbThreadDAO getThreadDAO();
     public abstract IbPostDAO getPostDAO();
 }

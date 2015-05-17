@@ -21,7 +21,10 @@ public class SimpleDAOFactoryImpl extends SimpleDAOFactory {
         return new UserDAOImpl();
     }
 
-    public IbBoardDAO getBoardDAO() {
+    public IbBoardSectionDAO getIbBoardSectionDAO() {
+        return new IbBoardSectionDAOImpl();
+    }
+    public IbBoardDAO getIbBoardDAO() {
         return new IbBoardDAOImpl();
     }
 

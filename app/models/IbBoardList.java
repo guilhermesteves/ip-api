@@ -4,9 +4,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import models.common.db.factory.SimpleDAOFactory;
 import models.common.json.JsonListSerializer;
 import models.common.json.JsonSerializable;
-import models.common.db.generic.SimpleDAOImpl;
-import org.apache.commons.collections.IteratorUtils;
-import org.jongo.MongoCollection;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -36,7 +33,7 @@ public class IbBoardList extends ArrayList<IbBoard> implements JsonSerializable 
     //**********************************************************
 
     public static IbBoardList list(Integer offset, Integer limit) {
-        return new IbBoardList(SimpleDAOFactory.getInstance().getBoardDAO().listAll(offset, limit));
+        return new IbBoardList(SimpleDAOFactory.getInstance().getIbBoardDAO().listAll(offset, limit));
     }
 
     //**********************************************************
